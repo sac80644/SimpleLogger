@@ -6,6 +6,12 @@ namespace SimpleLogger
 {
     public class Logger : ILogger
     {
+        public enum LoggerType
+        {
+            ConsoleLogger,
+            FileLogger
+        }
+
         public bool IsDebugEnabled { get; }
 
         public bool IsInfoEnabled { get; }
@@ -23,9 +29,15 @@ namespace SimpleLogger
             _log = LogManager.GetLogger("DefaultLog");
         }
 
-        public ILog GetLogger(string name)
+        public Logger(string name)
         {
-            return LogManager.GetLogger(name);
+            _log = LogManager.GetLogger(name);
+        }
+
+        public Logger(LoggerType loggerType)
+        {
+            var type = loggerType.ToString();
+            _log = LogManager.GetLogger(loggerType.ToString());
         }
 
         public void Debug(object message)
@@ -35,47 +47,47 @@ namespace SimpleLogger
 
         public void Debug(object message, Exception exception)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Error(object message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Error(object message, Exception exception)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Fatal(object message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Fatal(object message, Exception exception)
-        {
-            throw new NotImplementedException();
+            _log.Debug(message, exception);
         }
 
         public void Info(object message)
         {
-            throw new NotImplementedException();
+            _log.Info(message);
         }
 
         public void Info(object message, Exception exception)
         {
-            throw new NotImplementedException();
+            _log.Info(message, exception);
         }
 
         public void Warn(object message)
         {
-            throw new NotImplementedException();
+            _log.Warn(message);
         }
 
         public void Warn(object message, Exception exception)
         {
-            throw new NotImplementedException();
+            _log.Warn(message, exception);
+        }
+
+        public void Error(object message)
+        {
+            _log.Error(message);
+        }
+
+        public void Error(object message, Exception exception)
+        {
+            _log.Error(message, exception);
+        }
+
+        public void Fatal(object message)
+        {
+            _log.Fatal(message);
+        }
+
+        public void Fatal(object message, Exception exception)
+        {
+            _log.Fatal(message, exception);
         }
     }
 }
