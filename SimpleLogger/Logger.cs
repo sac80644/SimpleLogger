@@ -4,14 +4,14 @@ using log4net.Core;
 
 namespace SimpleLogger
 {
+    public enum LoggerType
+    {
+        ConsoleLogger,
+        FileLogger
+    }
+
     public class Logger : ILogger
     {
-        public enum LoggerType
-        {
-            ConsoleLogger,
-            FileLogger
-        }
-
         public bool IsDebugEnabled { get; }
 
         public bool IsInfoEnabled { get; }

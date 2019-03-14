@@ -13,13 +13,19 @@ namespace TestHarness
 
         static void Main(string[] args)
         {
-            ILogger log = new Logger("FileLogger");
-            log.Debug("debug", new Exception("custom exception"));
-            log.Warn("warn");
-            log.Error("error");
-            log.Fatal("fatal");
-            log.Info("info");
-            Console.Read();
+            ILogger logF = new Logger(LoggerType.FileLogger);
+            logF.Debug("debug", new Exception("custom exception"));
+            logF.Warn("warn");
+            logF.Error("error");
+            logF.Fatal("fatal");
+            logF.Info("info");
+
+            ILogger logC = new Logger(LoggerType.ConsoleLogger);
+            logC.Debug("debug", new Exception("custom exception"));
+            logC.Warn("warn");
+            logC.Error("error");
+            logC.Fatal("fatal");
+            logC.Info("info");
         }
     }
 }
