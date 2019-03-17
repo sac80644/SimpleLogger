@@ -1,8 +1,7 @@
 ﻿using System;
 using log4net;
-using log4net.Core;
 
-namespace SimpleLogger
+namespace GallowayTech.SimpleLogger
 {
     public enum LoggerType
     {

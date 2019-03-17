@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleLogger
+namespace GallowayTech.SimpleLogger
 {
     public interface ILogger
     {
